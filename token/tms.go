@@ -8,14 +8,12 @@ package token
 
 import (
 	"fmt"
-	"github.com/hyperledger-labs/fabric-smart-client/platform/view/services/flogging"
-
-	"github.com/pkg/errors"
 
 	"github.com/hyperledger-labs/fabric-smart-client/platform/view"
-
+	"github.com/hyperledger-labs/fabric-smart-client/platform/view/services/flogging"
 	"github.com/hyperledger-labs/fabric-token-sdk/token/core"
 	tokenapi "github.com/hyperledger-labs/fabric-token-sdk/token/driver"
+	"github.com/pkg/errors"
 )
 
 var logger = flogging.MustGetLogger("token-sdk")
@@ -180,7 +178,7 @@ func (t *ManagementService) NewMetadataFromBytes(raw []byte) (*Metadata, error) 
 		return nil, err
 	}
 	return &Metadata{
-		queryService:         t.tms,
+		tms:                  t.tms,
 		tokenRequestMetadata: tokenRequestMetadata,
 	}, nil
 }
